@@ -1,0 +1,29 @@
+apm-server:
+  host: "apm-server:8200"
+  concurrent_requests: 5
+  rum:
+    enabled: true
+
+queue.mem.events: 4096
+max_procs: 4
+
+setup.template:
+  enabled: true
+  name: "apm-server"
+  pattern: "apm-*"
+  settings.index:
+    number_of_shards: 1
+    number_of_replicas: 1
+
+setup.kibana:
+  host: "kibana:5601"
+  username: "elastic"
+  password: "password"
+  path: "/"
+  ssl.enabled: false
+         
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  protocol: http
+  username: "elastic"
+  password: "password"
